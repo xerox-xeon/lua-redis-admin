@@ -85,10 +85,10 @@ then, enter username and password what you set in file 'application.properties'
 
 **Please Note: trunk is current development branch.**
 
-* [**Releases-Notes**](https://github.com/mauersu/redis-admin/wiki/Recent-Releases-Notes)
+* [**Inspired by**](https://github.com/mauersu/redis-admin/)
 
 ##  FAQ
 
-* [**FAQ**](https://github.com/mauersu/redis-admin/wiki/FAQ)
+* [**FAQ**](https://github.com/lifeblood/lor-redis-admin/wiki/FAQ)
 
 ![img-source-from-https://github.com/docker/dockercraft](https://github.com/docker/dockercraft/raw/master/docs/img/contribute.png?raw=true)

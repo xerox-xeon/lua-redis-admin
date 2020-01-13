@@ -1,0 +1,178 @@
+<!-- 右侧列表  -->
+<div class="container" style="width: 98%; align: center;">
+
+<div class="col-sm-12 col-md-12 main">
+	
+	<div class="col-sm-3 col-md-3">
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addServerModal" data-whatever="addServer">addServer</button>
+		<button type="button" class="refrebu_btn btn btn-default" >refresh</button>
+	</div>
+	
+	<div class="row col-sm-offset-3 col-md-offset-3 ">
+
+		<div class="col-sm-5 col-md-5">
+			<div class="input-group">
+				<input id="query_input" type="text" name="${queryLabel_en }" value="{{ params.queryValue }}" class="form-control" aria-label="Text input with segmented button dropdown"> <span class="input-group-btn">
+					<button id="query_btn" class="btn btn-default" type="button">Query</button>
+				</span>
+			</div>
+		</div>
+		
+		<div class="col-sm-offset-5 col-md-offset-5 ">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" data-whatever="add">add</button>
+			<button type="button" class="edit_btn btn btn-primary" >view/update</button>
+			<button type="button" class="delete_btn btn btn-primary" value1="delete" >delete</button>
+			<button type="button" class="refresh_btn btn btn-default" >refresh</button>
+
+		</div>
+	</div>
+
+	<div class="col-sm-3 col-md-3">
+		<div class="zTreeDemoBackground left">
+			<ul id="treeDemo" class="ztree"></ul>
+		</div>
+	</div>
+	
+	<div class="table-responsive col-sm-offset-3 col-md-offset-3">
+
+
+		<table id="listTable" class="table table-striped" >
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>index</th>
+					<th>key</th>
+					<c:if test="${showType == 'show' }">
+						<th>type</th>
+					</c:if>
+				</tr>
+			</thead>
+			<tbody>
+
+					{% for i, key in ipairs(redisKeys) do %}
+					<tr class="redisKey">
+						<td><input type="checkbox" name="redisKey" value1="{{ key.name }}" value2="{{ key.type }}" ></td>
+						<td>{{ key.id }}</td>
+						<td>{{ key.name }}</td>
+						<c:if test="${showType == 'show' }">
+							<td>{{ key.type }}</td>
+						</c:if>
+					</tr>
+				{% end %}
+			</tbody>
+		</table>
+		
+		<nav>
+		  <ul id="listPagination" class="pagination">
+		  </ul>
+		</nav>
+
+		<div id="listPagination1" class="right flickr"></div>
+	</div>
+</div>
+</div>
+
+{(admin/redis/addModal.html)}
+{(admin/redis/addServerModal.html)}
+{(admin/redis/updateModal.html)}
+
+<script src="/static/js/admin/redis/dataTypeLineHtml.js"></script>
+<script src="/static/js/admin/redis/addRedisKV.js"></script>
+<script src="/static/js/admin/redis/updateRedisKV.js"></script>
+<script>
+	var serverName = '{{ serverName }}';
+	var serverHost = '{{ serverHost }}';
+	var dbIndex = '{{ dbIndex }}';
+	var basePath = '/redis';
+	var groupId = '{{ groupId }}';
+	function pageselectCallback(page_id, jq) {
+    }
+	
+	$(document).ready(function() {
+		
+        $("#listPagination").pagination('{{pagination.maxentries}}', {
+            callback: pageselectCallback,
+            prev_text: '{{pagination.prev_text}}',
+            next_text: '{{pagination.next_text}}',
+            items_per_page: parseInt('{{pagination.items_per_page}}'),
+            num_display_entries: parseInt('{{pagination.num_display_entries}}'),
+            current_page: parseInt('{{pagination.current_page}}'),
+            num_edge_entries: parseInt('{{pagination.num_edge_entries}}'),
+            link_to:'?queryKey=middle&queryKey_ch=like*&queryValue={{ params.queryValue }}&items_per_page={{pagination.items_per_page}}&num_display_entries={{pagination.num_display_entries}}&visit_page=__id__&num_edge_entries={{pagination.num_edge_entries}}&prev_text=Prev&next_text=Next&ellipse_text=Next&prev_show_always=true&next_show_always=true'
+        }); 
+		
+		$(".query_a").on("click", function() {
+			var query_a_ch = $(this).text();
+			var query_a_en = $(this).attr("value1");
+			$("#queryLabel_btn").text(query_a_ch);
+			$("#query_input").attr("name", query_a_en);
+		});
+		
+		$("#query_btn").on("click", function() {
+			var queryKey = $("#query_input").attr("name");
+			var queryValue = $("#query_input").val();
+			var url = '/redis/group/' + groupId + '/' + serverName + '/' + dbIndex + '?queryKey='+queryKey + '&queryValue=' + queryValue;
+			var encodeUrl = encodeURI(url);
+			window.location.href = encodeUrl;
+		});
+		
+		$(".back_btn").on("click", function() {
+			window.location.href = '/redis/group/' + groupId + '/' + serverName + '/' + dbIndex;
+		});
+		
+		
+		$(".delete_btn").on("click", function() {
+			var operator = $(this).attr("value1");
+			var url = "/api/delKV";
+			
+			var deleteKeys = '';
+			
+			$("#listTable").find("input:checkbox[name='redisKey']:checked").each(function(){
+				var key = $(this).attr("value1");
+				deleteKeys = deleteKeys + "," +key;
+			})
+			
+			deleteKeys = deleteKeys.substring(1);
+			
+			if(deleteKeys == '') {
+				$("#model_title").text("warning");
+				$("#model_content").text("please choose one to delete");
+				$('#myModal').modal();
+				return;
+			}
+			
+			$.ajax({
+				type: "post",
+				contentType: "application/json; charset=utf-8",
+				url: url,
+				dataType: "json",
+				data: JSON.stringify({
+					serverName: serverName,
+					dbIndex: dbIndex,
+					deleteKeys: deleteKeys,
+				}),
+				success: function(data) {
+					modelAlert(data);
+				}
+			});
+		});
+		
+		$(".changeShowType_btn").on("click", function() {
+			var newState = $(this).attr("value1");
+			var url = "static/redis/changeShowType";
+			$.ajax({
+				type: "post", 
+				url: url,
+				dataType: "json", 
+				data: {
+					state: newState,
+				},
+				success: function(data) {
+					modelAlert(data);
+				}
+			})
+		})
+	});
+</script>
+
+<script type="text/javascript" src="/static/js/admin/redis/ztree.js" ></script>

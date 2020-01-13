@@ -1,0 +1,35 @@
+version: '3.0'
+
+# docker networks
+# # create a network 'zerorpc_compose' in mode 'bridged'
+# docker network ls
+#
+# NETWORK ID          NAME                DRIVER              SCOPE
+# 50353e22a3ad        bridge              bridge              local
+# aabf00edfe33        host                host                local
+# 028776291c95        none                null                local
+#
+
+networks:
+  openresty_compose:
+    driver: bridge
+
+# services
+
+services:
+  # 1.openresty
+  openresty:
+    container_name: openresty
+    image: openresty/openresty:latest
+    networks:
+      openresty_compose:
+    restart: always # non stopped |always
+    volumes:
+     - ./app:/usr/local/openresty/nginx/app
+     - ./conf/conf.d/app.conf:/etc/nginx/conf.d/app.conf
+    ports:
+      - 8848:80
+    working_dir: /usr/local/openresty/nginx/app
+    command: openresty -g "daemon off;"
+
+

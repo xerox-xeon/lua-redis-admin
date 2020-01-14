@@ -1,0 +1,14 @@
+sudo: required
+
+services:
+  - docker
+
+env:
+  - COMPOSE_FILE=docker-compose.yml:docker-compose.override.travis.yml
+
+script:
+  - ls -lah
+  - docker-compose up -d --build openresty
+  - docker-compose ps
+  - docker-compose exec openresty /bin/bash -c "curl -I http://127.0.0.1:8848"
+  - docker-compose exec openresty ls

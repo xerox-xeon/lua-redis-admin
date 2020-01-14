@@ -1,5 +1,5 @@
 # lor-redis-admin [![Build Status](https://travis-ci.org/lifeblood/lor-redis-admin.svg?branch=master)](https://travis-ci.org/lifeblood/lor-redis-admin)
-[![GitHub release](https://img.shields.io/badge/release-download-orange.svg)](https://github.com/mauersu/redis-admin/releases)
+[![GitHub release](https://img.shields.io/badge/release-download-orange.svg)](https://github.com/lifeblood/lor-redis-admin/releases)
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 This is a redis client web tool written based on Java EE and Jedis. It's my objective to build the most convenient redis client web tool in the world. In the first place, it will facilitate in editing redis data, such as: add, update, delete, search, cut, copy, paste etc.

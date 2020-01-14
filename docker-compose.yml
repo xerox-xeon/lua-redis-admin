@@ -20,7 +20,8 @@ services:
   # 1.openresty
   openresty:
     container_name: openresty
-    image: openresty/openresty:latest
+    #image: openresty/openresty:centos
+    build: .
     networks:
       openresty_compose:
     restart: always # non stopped |always
@@ -28,8 +29,9 @@ services:
      - ./app:/usr/local/openresty/nginx/app
      - ./conf/conf.d/app.conf:/etc/nginx/conf.d/app.conf
     ports:
-      - 8848:80
-    working_dir: /usr/local/openresty/nginx/app
-    command: openresty -g "daemon off;"
+      - 8848:8848
+    working_dir: /usr/local/openresty/nginx
+    command: "openresty -g 'daemon off;'"
+
 
 

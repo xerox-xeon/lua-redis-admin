@@ -7,7 +7,7 @@ return {
 	view_config = {
 		engine = "tmpl",
 		ext = "html",
-		views = "./app/views"
+		views = "../app/views"
 	},
 
     redis_group = {

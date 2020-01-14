@@ -6,11 +6,6 @@ local http_model = require("app.models.http")
 local redis_model = require("app.models.redis")
 local redisRouter = lor:Router() -- 生成一个group router对象
 
-redisRouter:get("/test", function(req, res, next)
-    res:render("admin/redis/list",{
-        res = redis_pool
-    })
-end)
 
 redisRouter:get("/", function(req, res, next)
     res:render("admin/redis/hello",{
@@ -18,6 +13,8 @@ redisRouter:get("/", function(req, res, next)
         redis_group = redis_group
     })
 end)
+
+
 
 redisRouter:get("/group/:id", function(req, res, next)
     local groupId = req.params.id

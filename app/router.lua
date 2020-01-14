@@ -10,16 +10,10 @@ return function(app)
         res:send("hi! welcome to lor framework.")
     end)
 
-    app:get("/test", function(req, res, next)
-        return res:json(redis_pool[1])
-    end)
+
     -- simple router: render html, visit "/" or "/?name=foo&desc=bar
     app:get("/", function(req, res, next)
-        local data = {
-            name =  req.query.name or "lor",
-            desc =  req.query.desc or 'a framework of lua based on OpenResty'
-        }
-        res:render("index", data)
+        res:redirect("/redis/")
     end)
 
     -- group router: 对以`/user`开始的请求做过滤处理

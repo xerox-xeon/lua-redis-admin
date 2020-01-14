@@ -4,7 +4,7 @@
 
 This is a redis client web tool written based on Java EE and Jedis. It's my objective to build the most convenient redis client web tool in the world. In the first place, it will facilitate in editing redis data, such as: add, update, delete, search, cut, copy, paste etc.
 
-![](https://www.google.com/logos/2012/halloween-2012-hp.jpg)
+![](https://cdn4.iconfinder.com/data/icons/redis-2/467/Redis_Logo-512.png)
 
 ## Features
 

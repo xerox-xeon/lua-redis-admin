@@ -4,7 +4,7 @@ services:
   - docker
 
 env:
-  - COMPOSE_FILE=docker-compose.yml:docker-compose.override.travis.yml
+  - COMPOSE_FILE=docker-compose.yml:docker-compose.yml
 
 script:
   - ls -lah

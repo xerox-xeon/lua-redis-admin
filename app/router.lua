@@ -7,7 +7,7 @@ return function(app)
 
     -- simple router: hello world!
     app:get("/hello", function(req, res, next)
-        res:send("hi! welcome to lor framework.")
+        res:send("hi! welcome to lor-redis-admin.")
     end)
 
 

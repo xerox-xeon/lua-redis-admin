@@ -1,4 +1,4 @@
-# lor-redis-admin [![Build Status](https://travis-ci.org/lifeblood/lor-redis-admin.svg?branch=master)](https://travis-ci.org/lifeblood/lor-redis-admin)
+# lua-redis-admin [![Build Status](https://travis-ci.org/lifeblood/lua-redis-admin.svg?branch=master)](https://travis-ci.org/lifeblood/lua-redis-admin)
 [![GitHub release](https://img.shields.io/badge/release-download-orange.svg)](https://github.com/lifeblood/lor-redis-admin/releases)
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 

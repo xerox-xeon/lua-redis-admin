@@ -32,34 +32,30 @@ This is a redis client web tool written based on Openresty lor Lua framework and
 
 ```
 redis_pool= {
-                redis1 =  {
-                    host = "127.0.0.1",
-                    port = 6379,
-                    db_index = 0,
-                    password = "",
-                    timeout = 1000,
-                    keepalive = 60000,
-                    pool_size = 1000,
-                    group = "dev"
-                },
+        redis1 = {
+            host = "127.0.0.1",
+            port = 6379,
+            db_index = 0,
+            password = "",
+            timeout = 1000,
+            keepalive = 60000,
+            pool_size = 1000,
+            group = "dev"
+        },
                 
-
-                redis2 =  {
-                        host = "127.0.0.1",
-                        port = 6379,
-                        db_index = 0,
-                        password = "",
-                        timeout = 1000,
-                        keepalive = 60000,
-                        pool_size = 1000,
-                        group = "test"
-                }
-
-                }
-
-
-
+        redis2 =  {
+            host = "127.0.0.1",
+            port = 6379,
+            db_index = 0,
+            password = "",
+            timeout = 1000,
+            keepalive = 60000,
+            pool_size = 1000,
+            group = "test"
         }
+
+}
+
 ```
 
 `Second Step`: edit file:'./app/config/config.lua' :

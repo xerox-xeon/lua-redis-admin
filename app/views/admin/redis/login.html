@@ -3,17 +3,16 @@
     <form action="/auth/login" method="post">
         <h2 class="text-center">Login</h2>
         <div class="form-group">
-            <input type="text" class="form-control" name="Username" placeholder="Username" required="required">
+            <input type="text" class="form-control" name="Username" placeholder="Username" required="required" value="{{ remember }}">
         </div>
         <div class="form-group">
             <input type="password" class="form-control" name="Password" placeholder="Password" required="required">
         </div>
         <div class="form-group">
-            <div id="alert-danger" class="alert alert-danger" role="alert" style="display: none;"></div>
             <button type="submit" class="btn btn-primary btn-block">Log in</button>
         </div>
         <div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+            <label class="pull-left checkbox-inline"><input type="checkbox" name="remember"> Remember me</label>
         </div>
     </form>
 </div>

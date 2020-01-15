@@ -50,8 +50,5 @@ redisRouter:get("/group/:id/:servername/:db", function(req, res, next)
     })
 end)
 
-redisRouter:get("/json", function(req, res, next)
-    res:json(redis_pool)
-end)
 
 return redisRouter

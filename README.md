@@ -62,12 +62,14 @@ redis_pool= {
         }
 ```
 
-`Second Step`: edit file:'application.properties' :
+`Second Step`: edit file:'./app/config/config.lua' :
 
 ```
-####Security Manager
-manager.username=admin
-manager.password=admin
+    -- ####Security Manager
+    manager = {
+        username = 'admin',
+        password = 'admin'
+    }
 ```
 
 `Third Step`: deploy project

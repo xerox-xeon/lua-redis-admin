@@ -2,6 +2,7 @@
 local userRouter = require("app.routes.user")
 local redisRouter = require("app.routes.redis")
 local apiRouter = require("app.routes.api")
+local authRouter = require("app.routes.auth")
 local redis_pool = require("app.config.config").redis_pool
 return function(app)
 
@@ -20,5 +21,6 @@ return function(app)
     app:use("/user", userRouter())
     app:use("/redis", redisRouter())
     app:use("/api", apiRouter())
+    app:use("/auth", authRouter())
 end
 

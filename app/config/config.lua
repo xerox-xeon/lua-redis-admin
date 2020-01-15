@@ -1,4 +1,9 @@
 return {
+    -- ####Security Manager
+    manager = {
+        username = 'admin',
+        password = 'admin'
+    },
     --分页
     pagination = {
         items_per_page = '10'

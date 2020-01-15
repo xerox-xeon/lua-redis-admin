@@ -21,9 +21,9 @@ This is a redis client web tool written based on Openresty lor Lua framework and
 
 ##  Screenshots
 
-![image](http://github.com/lifeblood/lor-redis-admin/app/static/img/Screenshot_1.png)
+![image](https://raw.githubusercontent.com/lifeblood/lor-redis-admin/master/app/static/img/Screenshot_1.png)
 
-![image](http://github.com/lifeblood/lor-redis-admin/app/static/img/Screenshot_2.png)
+![image](https://raw.githubusercontent.com/lifeblood/lor-redis-admin/master/app/static/img/Screenshot_2.png)
 
 ##  Quick Start
 

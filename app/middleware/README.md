@@ -6,6 +6,7 @@ You are recommended to define your own middlewares and keep them in one place to
 
 建议用户将自定义插件存放在此目录下统一管理，然后在其他地方引用，插件的格式如下:
 
+
 ```
 local middleware =  function(params)
     return function(req, res, next)

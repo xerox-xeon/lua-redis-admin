@@ -10,6 +10,7 @@ local function is_login(req)
     return false, nil
 end
 
+
 local function check_login()
     return function(req, res, next)
         local requestPath = req.path

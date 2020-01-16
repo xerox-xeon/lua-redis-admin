@@ -62,8 +62,12 @@ apiRouter:post("/KV", function(req, res, next)
         dbIndex = req.body.dbIndex,
         key = req.body.key,
         dataType = req.body.dataType,
-        field = req.body.field,
-        value = req.body.value
+        score_field = req.body.score_field or '',
+        score = req.body.score or '',
+        field = req.body.field or '',
+        member_field = req.body.member_field or '',
+        member = req.body.member or '',
+        value = req.body.value or ''
     }
 
     local data = redis_model:post_redis_keyValue(params)

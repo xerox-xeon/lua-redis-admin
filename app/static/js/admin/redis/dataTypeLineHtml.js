@@ -34,14 +34,16 @@ var zsetHtml = '<div class="input_div input-group col-sm-12 col-lg-12">' +
 						'<div class="col-sm-6 col-lg-6">' + 
 							'<div class="input-group col-sm-12 col-lg-12">' + 
 							  '<span class="input-group-addon" >score</span>' + 
-							  '<input name="score" type="text" class="form-control" placeholder="score" >' + 
-							'</div>' + 
+							  '<input name="score_field" type="text" class="requireds form-control" placeholder="score" style="display: none">' +
+							  '<input name="score" type="text" class="form-control" placeholder="score" >' +
+							'</div>' +
 						'</div>' + 
 						'<div class="col-sm-6 col-lg-6">' + 
 							'<div class="input-group col-sm-12 col-lg-12">' + 
 								'<span class="input-group-addon">member</span>' + 
-								'<input name="member" type="text" class="requireds form-control" placeholder="member"  > ' + 
-								'<span class="input-group-btn">' + 
+								'<input name="member_field" type="text" class="requireds form-control" placeholder="value" style="display: none">' +
+								'<input name="member" type="text" class="requireds form-control" placeholder="member"  > ' +
+								'<span class="input-group-btn">' +
 									'<button class="plus_btn btn btn-default" type="button" value1="ZSET">' + 
 										'<span class="glyphicon glyphicon-plus" />' + 
 									'</button>' + 

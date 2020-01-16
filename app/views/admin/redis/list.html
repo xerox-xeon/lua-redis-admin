@@ -52,10 +52,8 @@
 					<tr class="redisKey">
 						<td><input type="checkbox" name="redisKey" value1="{{ key.name }}" value2="{{ key.type }}" ></td>
 						<td>{{ key.id }}</td>
-						<td>{{ key.name }}</td>
-						<c:if test="${showType == 'show' }">
-							<td>{{ key.type }}</td>
-						</c:if>
+						<td style="cursor:pointer">{{ key.name }}</td>
+						<td>{{ key.type }}</td>
 					</tr>
 				{% end %}
 			</tbody>
@@ -97,7 +95,7 @@
             num_display_entries: parseInt('{{pagination.num_display_entries}}'),
             current_page: parseInt('{{pagination.current_page}}'),
             num_edge_entries: parseInt('{{pagination.num_edge_entries}}'),
-            link_to:'?queryKey=middle&queryKey_ch=like*&queryValue={{ params.queryValue }}&items_per_page={{pagination.items_per_page}}&num_display_entries={{pagination.num_display_entries}}&visit_page=__id__&num_edge_entries={{pagination.num_edge_entries}}&prev_text=Prev&next_text=Next&ellipse_text=Next&prev_show_always=true&next_show_always=true'
+            link_to:'?queryKey=middle&queryValue={{ params.queryValue }}&items_per_page={{pagination.items_per_page}}&num_display_entries={{pagination.num_display_entries}}&visit_page=__id__&num_edge_entries={{pagination.num_edge_entries}}&prev_text=Prev&next_text=Next&ellipse_text=Next&prev_show_always=true&next_show_always=true'
         }); 
 		
 		$(".query_a").on("click", function() {
@@ -106,11 +104,17 @@
 			$("#queryLabel_btn").text(query_a_ch);
 			$("#query_input").attr("name", query_a_en);
 		});
-		
+
+		$("#query_input").on("keyup", function(e) {
+			if(e.key === 'Enter'){
+				$('#query_btn').click();
+			}
+		});
+
 		$("#query_btn").on("click", function() {
 			var queryKey = $("#query_input").attr("name");
 			var queryValue = $("#query_input").val();
-			var url = '/redis/group/' + groupId + '/' + serverName + '/' + dbIndex + '?queryKey='+queryKey + '&queryValue=' + queryValue;
+			var url = '/redis/group/' + groupId + '/' + serverName + '/' + dbIndex + '?queryValue=' + queryValue;
 			var encodeUrl = encodeURI(url);
 			window.location.href = encodeUrl;
 		});

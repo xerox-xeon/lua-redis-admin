@@ -63,7 +63,7 @@
 		$("#query_btn").on("click", function() {
 			var queryKey = $("#query_input").attr("name");
 			var queryValue = $("#query_input").val();
-			var url = basePath + '/redis/stringList/' + serverName + '/' + dbIndex + '?queryKey='+queryKey + '&queryValue=' + queryValue;
+			var url = basePath + '/redis/stringList/' + serverName + '/' + dbIndex + '?queryValue=' + queryValue;
 			var encodeUrl = encodeURI(url);
 			window.location.href = encodeUrl;
 		});

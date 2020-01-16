@@ -1,4 +1,3 @@
-
 local redis = require("resty.redis-util")
 local redis_pool = require("app.config.config").redis_pool
 
@@ -30,7 +29,7 @@ function zset_model:update_redis_zset(params)
 
 
     if params.score_field == '' and params.member_field == '' then
-        ngx.log(ngx.ERR, params.key .. "-->" .. params.score .. "-->" .. params.member)
+        -- ngx.log(ngx.ERR, params.key .. "-->" .. params.score .. "-->" .. params.member)
         red:init_pipeline()
         red:zadd(params.key, params.score, params.member)
         local results, err = red:commit_pipeline()
